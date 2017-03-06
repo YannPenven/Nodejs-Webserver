@@ -14,11 +14,13 @@ var userSchema = mongoose.Schema({
 var User = mongoose.model('User', userSchema);
 
 
+
+exports.User = User;
+
+
+/*
 exports.getHome = function(username, cb) {
-  /*db.get().fetch({username:username}, function(err, docs) {
-    if (err) return cb(err)
-    cb(null, docs[0])
-  })*/
+
   var collection = db.get().collection('user');
   collection.find({'username':username}).toArray(function(err, docs) {
     assert.equal(err, null);
@@ -34,10 +36,7 @@ exports.getHome = function(username, cb) {
 }
 
 exports.getWork = function(username, cb) {
-  /*db.get().fetch({username:username}, function(err, docs) {
-    if (err) return cb(err)
-    cb(null, docs[0])
-  })*/
+
   var collection = db.get().collection('user');
   collection.find({'username': username}).toArray(function(err, docs) {
     assert.equal(err, null);
@@ -62,3 +61,4 @@ exports.all = function(cb) {
     cb(null,docs);
   });
 }
+*/
