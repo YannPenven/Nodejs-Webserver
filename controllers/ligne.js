@@ -10,13 +10,20 @@ router.get('/', function(req, res) {
     res.end(JSON.stringify(docs));
   })*/
   var Line = mongoose.model('Line');
-  Line.find(function (err, lines) {
+  Line.findAllLine(function (err, lines) {
     if (err) return console.error(err);
     res.setHeader('Content-Type', 'text/plain');
     res.end(JSON.stringify(lines));
   })
-  //console.log(Line);
-  //console.log(Ligne);
+})
+
+router.get('/:id', function(req, res) {
+  var Line = mongoose.model('Line');
+  Line.findLineById(req.params.id, function (err, lines) {
+    if (err) return console.error(err);
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(lines));
+  });
 })
 
 router.get('/add', function(req, res){

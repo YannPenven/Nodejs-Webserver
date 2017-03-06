@@ -1,7 +1,7 @@
 var express = require('express')
   , router = express.Router()
   , Ligne = require('../models/ligne')
-  , FB = require('fb');
+  , passport = require('passport');
 
 router.use('/line', require('./ligne'))
 router.use('/user', require('./user'))
@@ -12,18 +12,14 @@ router.use('/login', require('./login'))
 router.get('/auth/facebook', function(req, res){
     //req.app.locals.passport.authenticate('facebook', { scope : 'email' })
     //console.log(req.app)
-    console.log(FB);
-    FB.getLoginStatus(function(response) {
-      console.log("hello");
-      statusChangeCallback(response);
-     });
+    passport.authenticate('facebook', { scope : 'email' });
   });
 router.get('/auth/facebook/callback', function(req, res){
   /*req.app.locals.passport.authenticate('facebook', {
     successRedirect : '/user',
     failureRedirect : '/'
   })*/
-
+  req.end("Connected");
 });
 
 router.get('/logout', function(req, res) {

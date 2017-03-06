@@ -2,7 +2,7 @@
 var assert = require('assert');
 var mongoose = require('mongoose')
 
-
+var fieldToIngore = '-_id -__v';
 /*exports.all = function(cb) {
   var collection = db.get().collection('ligne');
   //console.log(collection);
@@ -23,5 +23,13 @@ var LineSchema = mongoose.Schema({
 });
 
 var Line = mongoose.model('Line', LineSchema);
+
+Line.findLineById = function(id,cb) {
+  return this.findOne({ number: id }, fieldToIngore, cb);
+};
+
+Line.findAllLine = function(cb){
+  return this.find({},fieldToIngore,cb);
+}
 
 exports.Line = Line;

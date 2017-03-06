@@ -1,5 +1,17 @@
 var db = require('db');
 var assert = require('assert');
+var mongoose = require('mongoose');
+
+var userSchema = mongoose.Schema({
+  facebook: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    }
+});
+
+var User = mongoose.model('User', userSchema);
 
 
 exports.getHome = function(username, cb) {
