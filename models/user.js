@@ -11,11 +11,19 @@ var userSchema = mongoose.Schema({
 var User = mongoose.model('User', userSchema);
 
 User.findAll = function(cb) {
-  return this.findOne({ }, fieldToIngore, cb);
+  return this.find({ }, fieldToIngore, cb);
 }
 
-User.findByName = function(name,cb) {
-  return this.findOne({ name:name }, fieldToIngore, cb);
+User.findByName = function(_username,cb) {
+  return this.findOne({ username:_username }, fieldToIngore, cb);
+}
+
+User.findHome = function(_username,cb){
+  return this.findOne({username:_username}, fieldToIngore, cb);
+}
+
+User.findWork = function(_username,cb){
+  return this.findOne({username:_username}, fieldToIngore, cb);
 }
 
 exports.User = User;

@@ -1,7 +1,7 @@
 var express = require('express')
   , router = express.Router()
   , mongoose = require('mongoose')
-  , Ligne = require('../models/ligne');
+  , Ligne = require('../../models/ligne');
 
 
 router.get('/', function(req, res) {
