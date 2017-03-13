@@ -3,17 +3,18 @@ var assert = require('assert')
   , fieldToIngore = '-_id';
 
   var StopSchema = mongoose.Schema({
+      id: Number,
       label: String,
-      number: Number,
-      color: String,
-      order: Number
+      latitude : Number,
+      longitude : Number,
+      line_id : Number
   });
 
-  var Stop = mongoose.model('Stop', StopSchema);
+  var Stop = mongoose.model('stop', StopSchema);
 
   Stop.findStopById = function(id,cb) {
     return this.findOne({ id: id }, fieldToIngore, cb);
-  };
+  }
 
   Stop.findStopByLineID = function(id,cb) {
     return this.find({ line_id: id}, fieldToIngore,cb);

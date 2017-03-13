@@ -4,19 +4,17 @@ var express = require('express')
 
 
 router.get('/all', function(req, res) {
-  var Stop = mongoose.model('Stop');
+  var Stop = mongoose.model('stop');
   Stop.findAllStop(function (err, lines) {
     if (err) return console.error(err);
-    res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(lines));
   })
 })
 
 router.get('/:id', function(req, res) {
-  var Stop = mongoose.model('Stop');
-  Stop.findfindStopById(req.params.id, function (err, lines) {
+  var Stop = mongoose.model('stop');
+  Stop.findStopById(req.params.id, function (err, lines) {
     if (err) return console.error(err);
-    res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(lines));
   })
 })

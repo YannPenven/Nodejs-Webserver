@@ -14,6 +14,10 @@ var db = mongoose.connection;
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(bodyParser()); // get information from html forms
+app.use(function(req, res, next) {
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    next();
+});
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(express.static('/public'));
