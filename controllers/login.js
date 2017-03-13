@@ -1,7 +1,7 @@
 var express = require('express')
   , router = express.Router()
   , User = require('../models/user')
-  , FB = require('fb');
+  , passport = require('passport');
 
 router.get('/', function(req, res) {
   res.render('../views/login.ejs', '');
@@ -12,7 +12,7 @@ router.post('/', function(req, res){
 		successRedirect : '/user',
 		failureRedirect : '/login'
   })*/
-  
+
 })
 
   module.exports = router

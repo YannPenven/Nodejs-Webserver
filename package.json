@@ -6,9 +6,11 @@
     "ejs": "^2.5.5",
     "express": "^4.14.0",
     "express-session": "^1.15.0",
+    "facebook-node-sdk": "^0.2.0",
     "mongodb": "^2.2.11",
     "mongoose": "^4.8.0",
     "passport": "^0.3.2",
-    "passport-facebook": "^2.1.1"
+    "passport-facebook": "^2.1.1",
+    "request": "^2.80.0"
   }
 }

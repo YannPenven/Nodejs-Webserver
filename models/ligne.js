@@ -1,19 +1,6 @@
-//var db = require('db');
-var assert = require('assert');
-var mongoose = require('mongoose')
-
-var fieldToIngore = '-_id -__v';
-/*exports.all = function(cb) {
-  var collection = db.get().collection('ligne');
-  //console.log(collection);
-  // Find some documents
-  collection.find({} , {_id: 0}).toArray(function(err, docs) {
-    assert.equal(err, null);
-    console.log("Found the following records");
-    console.log(docs)
-    cb(null,docs);
-  });
-}*/
+var assert = require('assert')
+  , mongoose = require('mongoose')
+  , fieldToIngore = '-_id -__v';
 
 var LineSchema = mongoose.Schema({
     label: String,
