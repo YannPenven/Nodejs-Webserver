@@ -1,7 +1,5 @@
 var express = require('express')
-  , router = express.Router()
-  , Ligne = require('../models/ligne')
-  , Stop = require('../models/Stop');
+  , router = express.Router();
 
 router.use('/line', require('./ligne'))
 router.use('/user', require('./user'))

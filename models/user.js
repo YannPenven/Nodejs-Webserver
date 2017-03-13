@@ -1,64 +1,21 @@
-var db = require('db');
-var assert = require('assert');
-var mongoose = require('mongoose');
+var assert = require('assert')
+  , mongoose = require('mongoose')
+  , fieldToIngore = '-_id';
 
 var userSchema = mongoose.Schema({
-  facebook: {
-        id: String,
-        token: String,
-        email: String,
-        name: String
-    }
+      username: String,
+      home: String,
+      work: String
 });
 
 var User = mongoose.model('User', userSchema);
 
+User.findAll = function(cb) {
+  return this.findOne({ }, fieldToIngore, cb);
+}
 
+User.findByName = function(name,cb) {
+  return this.findOne({ name:name }, fieldToIngore, cb);
+}
 
 exports.User = User;
-
-
-/*
-exports.getHome = function(username, cb) {
-
-  var collection = db.get().collection('user');
-  collection.find({'username':username}).toArray(function(err, docs) {
-    assert.equal(err, null);
-    if(typeof variable === 'undefined' || variable === null ){
-      return cb('400',null);
-    }
-    var collectionStop = db.get().collection('arret');
-    collectionStop.find({'id':docs[0].home}, { _id: 0, id: 0 }).toArray(function(err, docsArret) {
-      assert.equal(err, null);
-      cb(null,docsArret);
-    })
-  });
-}
-
-exports.getWork = function(username, cb) {
-
-  var collection = db.get().collection('user');
-  collection.find({'username': username}).toArray(function(err, docs) {
-    assert.equal(err, null);
-    if(typeof variable === 'undefined' || variable === null ){
-      return cb('400',null);
-    }
-    var collectionStop = db.get().collection('arret');
-    collectionStop.find({'id':docs[0].work}, { _id: 0, id: 0 }).toArray(function(err, docsArret) {
-      assert.equal(err, null);
-      cb(null,docsArret);
-    })
-  });
-}
-
-exports.all = function(cb) {
-  var collection = db.get().collection('user');
-
-  collection.find({}, { _id: 0, id: 0 }).toArray(function(err, docs) {
-    assert.equal(err, null);
-    console.log("Found the following records");
-    console.log(docs)
-    cb(null,docs);
-  });
-}
-*/

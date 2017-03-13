@@ -1,11 +1,12 @@
 var express = require('express')
   , router = express.Router()
-  , mongoose = require('mongoose');
+  , mongoose = require('mongoose')
+  , Stop = require('../../models/Stop');
 
 
-router.get('/all', function(req, res) {
+router.get('/', function(req, res) {
   var Stop = mongoose.model('stop');
-  Stop.findAllStop(function (err, lines) {
+  Stop.findAll(function (err, lines) {
     if (err) return console.error(err);
     res.end(JSON.stringify(lines));
   })
@@ -13,7 +14,7 @@ router.get('/all', function(req, res) {
 
 router.get('/:id', function(req, res) {
   var Stop = mongoose.model('stop');
-  Stop.findStopById(req.params.id, function (err, lines) {
+  Stop.findById(req.params.id, function (err, lines) {
     if (err) return console.error(err);
     res.end(JSON.stringify(lines));
   })

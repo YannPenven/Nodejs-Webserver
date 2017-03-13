@@ -12,15 +12,15 @@ var assert = require('assert')
 
   var Stop = mongoose.model('stop', StopSchema);
 
-  Stop.findStopById = function(id,cb) {
+  Stop.findById = function(id,cb) {
     return this.findOne({ id: id }, fieldToIngore, cb);
   }
 
-  Stop.findStopByLineID = function(id,cb) {
+  Stop.findByLineID = function(id,cb) {
     return this.find({ line_id: id}, fieldToIngore,cb);
   }
 
-  Stop.findAllStop = function(cb){
+  Stop.findAll = function(cb){
     return this.find({},fieldToIngore,cb);
   }
 
